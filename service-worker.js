@@ -1,4 +1,4 @@
-const CACHE_NAME = 'yesyes-question-editor-v1';
+const CACHE_NAME = 'yesyes-unified-blue-v2';
 const APP_SHELL = [
   './offline.html', './manifest.json', './icon-192.png', './icon-512.png'
 ];

@@ -526,3 +526,92 @@ body.examSaveLocked .finalValidationActions button,body.examSaveLocked #saveGene
 
 /* Question Editor V12 */
 .questionEditorPage{padding-bottom:50px}.qeSearchCard{margin-top:18px}.qeTopActions,.qeQuestionSearch{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center}.qeSectionHead{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.qeSectionHead h2{margin:0}.qeExamList,.qeQuestionsList{display:grid;gap:12px;margin-top:16px}.qeExamRow{width:100%;border:1px solid #c7d7e5;background:#fff;color:#0b2945;border-radius:14px;padding:15px;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:12px}.qeExamRow span{display:grid;gap:5px}.qeExamRow small{color:#60758a}.qeExamRow em{font-style:normal;background:#e8f2fb;border-radius:999px;padding:6px 10px;font-weight:800}.qeSummary{margin:14px 0;background:#eaf4ff;border-left:5px solid #0b5fa5;border-radius:10px;padding:12px;color:#0b2945}.qeQuestionCard{border:1px solid #cbd9e5;border-radius:16px;padding:15px;background:#fff;box-shadow:0 7px 18px #18334d12}.qeQuestionHead{display:flex;justify-content:space-between;align-items:center;gap:10px}.qeQuestionHead>div{display:flex;align-items:center;gap:9px}.qeQuestionHead b{font-size:20px;color:#0b3f70}.qeQuestionHead span{background:#e7f1fb;color:#13568e;padding:5px 10px;border-radius:999px;font-weight:800}.qeEditBtn{background:#7c3aed}.qeQuestionView{font-size:18px;line-height:1.65;font-weight:700;color:#132f48;margin:15px 0;white-space:normal}.qeOptionPreview{display:grid;gap:8px}.qeOptionPreview div{display:grid;grid-template-columns:38px 1fr;gap:8px;align-items:start;border:1px solid #d4e0ea;border-radius:10px;padding:9px}.qeOptionPreview div.correct{border-color:#22a447;background:#edfdf2}.qeOptionPreview b{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#eaf3fb;color:#0b4d82}.qeEditForm{margin-top:16px;border-top:2px solid #e4edf5;padding-top:15px}.qeEditForm label{display:block;margin-top:11px;font-weight:800}.qeEditForm input,.qeEditForm textarea,.qeEditForm select{margin-top:6px}.qeFormActions{display:flex;gap:10px;margin-top:15px}.qeFormActions button{flex:1}@media(max-width:640px){.qeTopActions,.qeQuestionSearch{grid-template-columns:1fr 1fr}.qeTopActions input,.qeQuestionSearch input{grid-column:1/-1}.qeSectionHead{align-items:center}.qeExamRow{align-items:flex-start}.qeQuestionView{font-size:16px}.qeFormActions{flex-direction:column}}
+
+/* =========================================================
+   YES & YES UNIFIED PREMIUM BLUE THEME — 2026-08-10
+   Brand gradient: deep navy -> royal blue
+   ========================================================= */
+:root{
+  --yy-navy:#061a42;
+  --yy-blue:#2563eb;
+  --yy-blue-deep:#0b3b75;
+  --yy-blue-mid:#145da0;
+  --yy-soft:#eaf5ff;
+  --yy-border:#c9dcf2;
+  --yy-shadow:rgba(6,26,66,.18);
+  --yy-gradient:linear-gradient(135deg,var(--yy-navy),var(--yy-blue));
+}
+
+body,.adminHubBody,.examBody,.resultBody{background:var(--yy-soft)}
+.hero,.adminTopbar,.simpleLoginHeader,.dscHeader,.resultHero{background:var(--yy-gradient)!important}
+.btn,a.btn,button,.blueBtn{background:var(--yy-gradient)}
+.card{box-shadow:0 12px 30px var(--yy-shadow)}
+
+/* Dashboard: one brand colour for every main feature card */
+.featureBlue,.featureGold,.featureGreen,.featurePurple,.featureOrange,.featureRed{
+  background:var(--yy-gradient)!important;
+}
+.featureCard{
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 12px 26px var(--yy-shadow);
+}
+.featureCard:hover,.featureCard:active{box-shadow:0 16px 32px rgba(6,26,66,.25)}
+
+/* Brand-consistent neutral top actions */
+.adminTopActions .gray,.hero .gray{
+  background:rgba(255,255,255,.18)!important;
+  border:1px solid rgba(255,255,255,.22);
+  backdrop-filter:blur(5px);
+}
+
+/* Keep semantic feedback/status colours intact for safety and clarity. */
+.msg.ok,.goodText,.correctOption{ }
+
+/* Compact mobile Admin Dashboard: show all 8 feature cards together */
+@media(max-width:600px){
+  .adminHubBody .adminTopbar{
+    padding:12px 14px 11px;
+    gap:8px;
+  }
+  .adminHubBody .adminTopbar h1{font-size:21px;line-height:1.05}
+  .adminHubBody .adminTopbar p{font-size:11px;margin-top:3px}
+  .adminHubBody .adminTopActions{gap:7px}
+  .adminHubBody .adminTopActions>*{
+    padding:9px 10px;
+    min-height:38px;
+    font-size:12px;
+    margin:0;
+  }
+  .adminHubBody .wrap{padding:8px 10px 10px}
+  .adminHubBody .adminWelcome{margin:3px 0 8px}
+  .adminHubBody .adminWelcome h2{font-size:22px;line-height:1.05}
+  .adminHubBody .adminWelcome p{font-size:11px;margin:4px 0 0}
+  .adminHubBody .featureGrid{gap:7px}
+  .adminHubBody .featureCard{
+    min-height:86px;
+    height:86px;
+    padding:9px 11px;
+    border-radius:15px;
+    justify-content:center;
+    margin:0;
+  }
+  .adminHubBody .featureCard span{font-size:20px;line-height:1}
+  .adminHubBody .featureCard b{font-size:13px;line-height:1.12;margin-top:5px}
+  .adminHubBody .featureCard small{font-size:8.5px;line-height:1.18;margin-top:4px}
+}
+
+/* Extra-short phones: prioritize all 8 cards on the first dashboard view */
+@media(max-width:600px) and (max-height:760px){
+  .adminHubBody .adminTopbar{padding:9px 12px}
+  .adminHubBody .adminTopbar h1{font-size:19px}
+  .adminHubBody .adminTopbar p{display:none}
+  .adminHubBody .adminTopActions>*{min-height:34px;padding:7px 9px;font-size:11px}
+  .adminHubBody .adminWelcome{margin:2px 0 6px}
+  .adminHubBody .adminWelcome h2{font-size:19px}
+  .adminHubBody .adminWelcome p{display:none}
+  .adminHubBody .featureGrid{gap:6px}
+  .adminHubBody .featureCard{min-height:76px;height:76px;padding:7px 9px}
+  .adminHubBody .featureCard span{font-size:18px}
+  .adminHubBody .featureCard b{font-size:12px;margin-top:4px}
+  .adminHubBody .featureCard small{font-size:7.8px;margin-top:3px}
+}
