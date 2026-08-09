@@ -1,0 +1,37 @@
+YES & YES — CLEAN PROJECT AUDIT
+
+Base audited: KSR-PLUS-main(5).zip
+Goal: Keep only files required by the current working flow and remove legacy / unused files.
+
+CURRENT FLOW KEPT:
+- Student landing/login: index.html
+- Secure exam screen: exam.html
+- Result screen: result.html
+- Admin login/create admin: login.html, create-admin.html
+- Admin dashboard: dashboard.html + dashboard-lite.js
+- New Exam builder: new-exam.html + new-exam.js + parser.js
+- Students & Contacts: master-data.html + master-data.js
+- Live Monitor: live-monitor.html + live-monitor.js
+- Question Bank: question-bank.html + question-bank.js
+- Question Editor: question-editor.html + question-editor.js
+- Shared Firebase module: app.js + firebase-config.js
+- PWA: manifest.json, pwa-register.js, service-worker.js, offline.html, icons
+- Shared UI: style.css
+- Firestore security rules: firestore.rules
+
+REMOVED AFTER REFERENCE AUDIT:
+- admin.html / admin.js — old Phase-1 admin screen, not linked by current dashboard
+- admin-daily.js — old create-exam implementation, replaced by new-exam.js
+- create-exam-recovery.js — recovery layer for old create-exam implementation
+- firebase-core.js — legacy Firebase module used only by removed legacy files
+- exam.js — legacy exam implementation; current exam.html contains its own active module logic
+- parser-controller.js — old standalone parser controller, not used by current New Exam
+- pdf.js — unused helper; current PDF screens use their active inline logic/CDN libraries
+- questions.html — old multi-subject exam builder, replaced by New Exam + Question Editor
+- setup.html — debug/config viewer, not needed in production flow
+- student.html / student.js — old student login flow, replaced by index.html
+- students.html — old Student Master, replaced by Students & Contacts (master-data.html)
+
+IMPORTANT:
+- firebase-config.js intentionally contains placeholder values. Create a NEW Firebase project for Yes & Yes and paste its Web App config there before publishing.
+- firestore.rules must be reviewed/published in the new Firebase project.

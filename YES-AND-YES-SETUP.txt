@@ -1,0 +1,21 @@
+YES & YES — NEW APP BASE
+
+This project was created from the supplied KSR PLUS app as a separate branded copy.
+
+Already changed:
+- App name / visible branding -> Yes & Yes
+- PWA manifest -> Yes & Yes
+- PWA cache name -> separate Yes & Yes cache
+- Browser localStorage keys -> separate Yes & Yes keys
+- Common PDFs/reports visible branding -> Yes & Yes
+- App icons -> Y&Y branded icons
+
+IMPORTANT — BEFORE PUBLISHING:
+1. Create a NEW Firebase project for Yes & Yes.
+2. Enable Authentication and Firestore as required.
+3. Paste the new Web App config into firebase-config.js.
+4. Publish the included firestore.rules after reviewing them for the new project.
+5. Create the first Yes & Yes super admin from create-admin.html.
+6. Test institute creation, student creation, exam creation, login, exam submit and result flow.
+
+The old KSR Firebase credentials were intentionally removed so this new app cannot accidentally read/write KSR production data.
