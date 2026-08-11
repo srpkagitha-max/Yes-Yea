@@ -10,6 +10,7 @@
 <label>Exam ID<input id="examId" placeholder="GRAND-TEST-101"></label>
 <label>Active Students<input id="activeStudents" type="number" value="0" readonly></label>
 <label>Backup Codes<input id="backupCodes" type="number" min="0" value="10"></label>
+<label>Seconds per Question<input id="secondsPerQuestion" type="number" min="5" max="600" step="1" value="60" inputmode="numeric"><small>Example: 60 = 1 minute per question</small></label>
 <label>Start Exam<input id="startTime" type="datetime-local"></label>
 <label>End Exam<input id="endTime" type="datetime-local"></label>
 <label>Login Before Time<input id="loginBefore" type="datetime-local"></label>
@@ -35,4 +36,4 @@
 <div id="previewModal" class="neModal" hidden><div class="neModalBox"><div class="neModalHead"><div><b id="previewExamTitle">Student Preview</b><small id="previewMeta"></small></div><button id="closePreview" class="danger">Close</button></div><div class="studentExamShell"><aside id="previewNav"></aside><section id="previewQuestion"></section></div></div></div>
 
 <div id="bankModal" class="neModal" hidden><div class="neModalBox qbPickerBox"><div class="neModalHead"><div><b>Add Questions from Question Bank</b><small>Subject → Class → Lesson → Questions</small></div><button id="closeBank" class="danger">Close</button></div><div class="qbPickerBody"><div id="bankTree" class="bankTree"></div><div class="bankQuestionArea"><div class="neActions"><button id="selectAllBank" class="gray">Select All</button><button id="clearBankSelection" class="gray">Clear Selection</button><button id="addSelectedBank" class="green">Add Selected Questions</button></div><div id="bankQuestions"></div></div></div></div></div>
-<script type="module" src="new-exam.js?v=20260729-new-exam-v5-merged"></script><script src="pwa-register.js?v=20260729-v10"></script></body></html>
+<script type="module" src="new-exam.js?v=20260811-question-time-v1"></script><script src="pwa-register.js?v=20260729-v10"></script></body></html>
