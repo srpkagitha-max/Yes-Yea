@@ -1,4 +1,4 @@
-import{auth,db,onAuthStateChanged,signOut,collection,getDocs,addDoc,doc,updateDoc,deleteDoc,serverTimestamp,$,show,esc}from'./app.js';
+import{auth,db,onAuthStateChanged,signOut,collection,getDocs,addDoc,doc,getDoc,updateDoc,deleteDoc,serverTimestamp,$,show,esc}from'./app.js';
 let institutes=[],batches=[],students=[],contacts=[],user=null,selectedInstitute='',selectedBatch='';
 onAuthStateChanged(auth,u=>{if(!u)location.href='login.html';else{user=u;loadAll()}});$('logout').onclick=()=>signOut(auth);
 const toast=(m,t='ok')=>show(m,t);
@@ -10,7 +10,28 @@ $('openAddStudent').onclick=()=>{if(!selectedBatch)return toast('Mundhu batch se
 $('closeAddStudent').onclick=()=>toggle('addStudentPanel',false);
 function toggle(id,on){$(id).hidden=!on;if(on)$(id).scrollIntoView({behavior:'smooth',block:'start'})}
 
-$('saveInst').onclick=async()=>{const name=$('instName').value.trim(),logoUrl=$('instLogo').value.trim();if(!name)return toast('Institute name enter cheyyandi','err');await addDoc(collection(db,'institutes'),{name,logoUrl,active:true,createdBy:user.email,createdAt:serverTimestamp()});$('instName').value='';$('instLogo').value='';toast('Institute saved ✅');loadAll()};
+$('saveInst').onclick=async()=>{
+  const btn=$('saveInst'),name=$('instName').value.trim(),logoUrl=$('instLogo').value.trim();
+  if(!name)return toast('Institute name enter cheyyandi','err');
+  if(!user)return toast('Admin session ledu. Logout chesi malli login avvandi.','err');
+  try{
+    btn.disabled=true; btn.textContent='Saving...';
+    const adminSnap=await getDoc(doc(db,'admins',user.uid));
+    if(!adminSnap.exists()||adminSnap.data().active!==true){
+      throw new Error('Ee login ki active Super Admin permission ledu. UID: '+user.uid);
+    }
+    await addDoc(collection(db,'institutes'),{name,logoUrl,active:true,createdBy:user.email||'',createdByUid:user.uid,createdAt:serverTimestamp()});
+    $('instName').value=''; $('instLogo').value='';
+    await loadAll();
+    toast('Institute saved ✅');
+  }catch(e){
+    console.error('Save Institute failed',e);
+    const code=e?.code?` [${e.code}]`:'';
+    toast('Institute save failed: '+(e?.message||'Unknown error')+code,'err');
+  }finally{
+    btn.disabled=false; btn.textContent='Save Institute';
+  }
+};
 $('saveBatch').onclick=async()=>{const instituteId=$('batchInst').value,name=$('batchName').value.trim();if(!instituteId||!name)return toast('Institute, Batch Name compulsory','err');await addDoc(collection(db,'batches'),{instituteId,name,active:true,createdBy:user.email,createdAt:serverTimestamp()});$('batchName').value='';toast('Batch saved ✅');loadAll()};
 $('batchInst').onchange=renderMasterBatches;
 
