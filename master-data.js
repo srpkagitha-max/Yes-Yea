@@ -1,4 +1,4 @@
-import{auth,db,onAuthStateChanged,signOut,collection,getDocs,addDoc,doc,getDoc,updateDoc,deleteDoc,serverTimestamp,$,show,esc}from'./app.js';
+import{auth,db,onAuthStateChanged,signOut,collection,getDocs,addDoc,doc,updateDoc,deleteDoc,serverTimestamp,$,show,esc}from'./app.js';
 let institutes=[],batches=[],students=[],contacts=[],user=null,selectedInstitute='',selectedBatch='';
 onAuthStateChanged(auth,u=>{if(!u)location.href='login.html';else{user=u;loadAll()}});$('logout').onclick=()=>signOut(auth);
 const toast=(m,t='ok')=>show(m,t);
@@ -16,10 +16,6 @@ $('saveInst').onclick=async()=>{
   if(!user)return toast('Admin session ledu. Logout chesi malli login avvandi.','err');
   try{
     btn.disabled=true; btn.textContent='Saving...';
-    const adminSnap=await getDoc(doc(db,'admins',user.uid));
-    if(!adminSnap.exists()||adminSnap.data().active!==true){
-      throw new Error('Ee login ki active Super Admin permission ledu. UID: '+user.uid);
-    }
     await addDoc(collection(db,'institutes'),{name,logoUrl,active:true,createdBy:user.email||'',createdByUid:user.uid,createdAt:serverTimestamp()});
     $('instName').value=''; $('instLogo').value='';
     await loadAll();
